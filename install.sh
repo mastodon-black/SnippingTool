@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # Installs Snipping Tool for the current user: checks the Python packages it
-# needs, then adds a desktop icon and an app-menu entry that run it from this
-# folder. Run it again after moving the folder to point the icons at the new
-# place. Nothing is copied and no root access is needed (except, if you agree,
-# to install missing packages with apt).
+# needs, then adds a desktop icon and a start-menu entry (the Mint menu, GNOME's
+# app grid and other desktops' menus all read it) that run it from this folder.
+# Run it again after moving the folder to point them at the new place. Nothing
+# is copied and no root access is needed (except, if you agree, to install
+# missing packages with apt).
 set -euo pipefail
 
 APP_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
@@ -113,5 +114,5 @@ command -v update-desktop-database >/dev/null && update-desktop-database "$menu_
 
 echo "Installed Snipping Tool from $APP_DIR"
 echo "  desktop icon: $desktop_dir/$DESKTOP_NAME"
-echo "  menu entry:   $menu_dir/$DESKTOP_NAME"
+echo "  start menu:   $menu_dir/$DESKTOP_NAME"
 echo "To uninstall, delete those two files."
